@@ -1,0 +1,15 @@
+.starter-template
+  h1 Détail d'un candidat
+.row
+  .col-md-12
+    table.table.table-hover
+      tbody
+        tr
+          td Nom
+          td
+            strong = @candidate.name
+        tr
+          td Nombre de votes
+          td
+            strong = @candidate.votes
+= link_to "Retour", candidates_path

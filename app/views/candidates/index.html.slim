@@ -1,0 +1,33 @@
+.starter-template
+  h1 Candidats
+  p.lead Total des votes exprimés pour chaque candidat.
+- if notice.present?
+  .row
+    .col-md-12
+      .alert.alert-success role="alert" = notice
+.row
+  .col-md-12
+    .table-responsive
+      table.table.table-striped
+        thead
+          tr
+            th ID
+            th Nom
+            th.text-right Votes
+            th
+        tbody
+          - @candidates.each do |candidate|
+            tr
+              td
+                = candidate.id
+              td
+                = candidate.name
+              td.text-right
+                = candidate.votes
+              td.text-center
+                .btn-group
+                  = link_to 'Détail', candidate, class: "btn btn-default btn-xs"
+                  = link_to 'Modifier', edit_candidate_path(candidate), class: "btn btn-default btn-xs"
+                  = link_to 'Supprimer', candidate, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: "btn btn-default btn-xs"
+    .pull-right
+      = link_to 'Ajouter un candidat', new_candidate_path, class: "btn btn-primary"

@@ -1,0 +1,17 @@
+= form_with(model: candidate, local: true) do |form|
+  - if candidate.errors.any?
+    .panel.panel-danger
+      .panel-heading
+        h3.panel-title
+          | #{pluralize(candidate.errors.count, "erreur a", "erreurs ont")} empêché d'enregistrer ce candidat :
+      - candidate.errors.full_messages.each do |message|
+        .panel-body
+          = message
+  .form-group
+    = form.label :name, "Nom du candidat"
+    = form.text_field :name, class: "form-control"
+  .form-group
+    = form.label :votes, "Nombre de votes"
+    = form.number_field :votes, min: 0, class: "form-control"
+  .pull-right
+    = form.submit "Valider", class: "btn btn-primary"
