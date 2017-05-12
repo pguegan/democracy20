@@ -2,7 +2,7 @@ class CandidatesController < ApplicationController
 
   # GET /candidates
   def index
-    @candidates = Candidate.all
+    @candidates = Candidate.where("name LIKE ?", "'%#{params[:search]}%'")
   end
 
   # GET /candidates/1

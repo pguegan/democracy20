@@ -1,0 +1,13 @@
+.DS_Store
+.byebug_history
+.ruby-version
+/config/database.yml
+/config/secrets.yml
+/public/uploads
+/public/assets
+/.bundle
+/log/*
+!/log/.keep
+/tmp
+/db/*.sql
+/db/*.sqlite3

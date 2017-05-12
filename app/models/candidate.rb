@@ -3,17 +3,25 @@ class Candidate < ApplicationRecord
   validates :name, presence: true
 
   def score
-    # TODO
+    if (sum = Candidate.sum(:votes)) > 0
+      100.0 * votes / sum
+    else
+      0
+    end
   end
 
   def absolute_winner?
-    # TODO
+    score > 50
   end
 
   class << self
 
     def winners
-      # TODO
+      if winner = all.find(&:absolute_winner?)
+        [winner]
+      else
+        all.max_by(2, &:score)
+      end
     end
 
   end

@@ -13,7 +13,8 @@
           tr
             th ID
             th Nom
-            th.text-right Votes
+            th.text-center Votes
+            th.text-center Score
             th
         tbody
           - @candidates.each do |candidate|
@@ -22,8 +23,10 @@
                 = candidate.id
               td
                 = candidate.name
-              td.text-right
+              td.text-center
                 = candidate.votes
+              td.text-center
+                = score_to_percentage candidate.score
               td.text-center
                 .btn-group
                   = link_to 'Détail', candidate, class: "btn btn-default btn-xs"
